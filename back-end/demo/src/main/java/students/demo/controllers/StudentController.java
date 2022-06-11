@@ -1,6 +1,7 @@
 package students.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import students.demo.models.Student;
 import students.demo.services.StudentService;
 
 @RestController
+@CrossOrigin(allowedHeaders = "*", origins = "*")
 public class StudentController {
     @Autowired
     private StudentService studentService;

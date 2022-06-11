@@ -1,8 +1,33 @@
 <div class="container">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius natus architecto, itaque fuga eum nulla quos quo excepturi
-    et rerum repellendus officia odio aspernatur voluptas mollitia nihil laboriosam eveniet necessitatibus. </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius natus architecto, itaque fuga eum nulla quos quo
+        excepturi
+        et rerum repellendus officia odio aspernatur voluptas mollitia nihil laboriosam eveniet necessitatibus. </p>
     <div class="card mt-5" style="align-items: center;">
         <h1>Student Dashboard</h1>
+    </div>
+
+    <div class="card mt-5" style="padding: 20px;">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <div class="form-group mt-3">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" #name (ngModel)="name" class="form-control"
+                    placeholder="Student name">
+            </div>
+            <div class="form-group mt-3">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" #address (ngModel)="address" class="form-control"
+                    placeholder="Student address">
+            </div>
+            <div class="form-group mt-3">
+                <label for="percentage">Percentage</label>
+                <input type="number" name="percentage" id="percentage" #percentage (ngModel)="percentage"
+                    class="form-control" placeholder="Student percentage">
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Register" class="btn btn-primary">
+            </div>
+
+        </form>
     </div>
 
 </div>
