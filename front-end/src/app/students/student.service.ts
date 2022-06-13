@@ -13,4 +13,8 @@ export class StudentService {
     public registerStudent(studentData: any) {
         return this.http.post(this.API.concat('/registerStudent'),studentData);
     }
+
+    public getStudents(){
+        return this.http.get(this.API.concat('/'));
+    }
 }

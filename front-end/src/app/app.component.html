@@ -30,4 +30,29 @@
         </form>
     </div>
 
+    <div class="card mt-3 p-3">
+        <table class="table table-bordered m-1 mx-auto">
+            <thead class="thead">
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Percentage</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr *ngFor="let student of studentDetails">
+                    <td>{{ student.rollNumber }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.percentage }}</td>
+                    <td><button class="btn btn-secondary">Edit</button></td>
+                    <td><button class="btn btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </div>
