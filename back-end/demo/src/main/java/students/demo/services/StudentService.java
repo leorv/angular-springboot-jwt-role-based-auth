@@ -21,4 +21,8 @@ public class StudentService {
         return (List<Student>) studentRepository.findAll();
     }
 
+    public void deleteStudent(Integer id){
+        studentRepository.deleteById(id);
+    }
+
 }
