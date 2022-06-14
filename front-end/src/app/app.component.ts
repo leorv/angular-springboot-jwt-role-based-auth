@@ -37,4 +37,16 @@ export class AppComponent {
             }
         })
     }
+
+    deleteStudent(id: number){
+        this.studentService.deleteStudent(id).subscribe({
+            next: (resp) => {
+                console.log(resp);
+                this.getStudentsDetails();
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+    }
 }

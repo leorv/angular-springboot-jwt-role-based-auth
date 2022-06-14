@@ -49,7 +49,7 @@
                     <td>{{ student.address }}</td>
                     <td>{{ student.percentage }}</td>
                     <td><button class="btn btn-secondary">Edit</button></td>
-                    <td><button class="btn btn-danger">Delete</button></td>
+                    <td><button class="btn btn-danger" (click)="deleteStudent(student.rollNumber)" >Delete</button></td>
                 </tr>
             </tbody>
         </table>

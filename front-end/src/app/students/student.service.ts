@@ -17,4 +17,8 @@ export class StudentService {
     public getStudents(){
         return this.http.get(this.API.concat('/'));
     }
+
+    public deleteStudent(id: number){
+        return this.http.delete(this.API.concat('/deleteStudent?id=').concat(id.toString()));
+    }
 }
