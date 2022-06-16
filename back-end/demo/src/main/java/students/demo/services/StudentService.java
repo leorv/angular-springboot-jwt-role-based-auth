@@ -21,8 +21,20 @@ public class StudentService {
         return (List<Student>) studentRepository.findAll();
     }
 
+    public Student updateStudent(Student student) {
+        Integer rollNumber = student.getRollNumber();
+        Student std = studentRepository.findById(rollNumber).get();
+        // std = student;
+        std.setName(student.getName());
+        std.setAddress(student.getAddress());
+        std.setPercentage(student.getPercentage());
+        return studentRepository.save(std);
+    }
+
     public void deleteStudent(Integer id){
         studentRepository.deleteById(id);
     }
+
+    
 
 }
