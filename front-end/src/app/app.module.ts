@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
     declarations: [
@@ -17,10 +18,13 @@ import { HttpClientModule } from '@angular/common/http'
         AppRoutingModule,
         BrowserAnimationsModule,
         FormsModule,
+        ModalModule,
         HttpClientModule,
         TooltipModule.forRoot()
     ],
-    providers: [],
+    providers: [
+        BsModalService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

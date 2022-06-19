@@ -21,4 +21,8 @@ export class StudentService {
     public deleteStudent(id: number){
         return this.http.delete(this.API.concat('/deleteStudent?id=').concat(id.toString()));
     }
+
+    public updateStudent(student: any){
+        return this.http.put(`${this.API}/updateStudent`, student);
+    }
 }

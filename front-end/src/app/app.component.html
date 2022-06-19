@@ -1,7 +1,4 @@
 <div class="container">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius natus architecto, itaque fuga eum nulla quos quo
-        excepturi
-        et rerum repellendus officia odio aspernatur voluptas mollitia nihil laboriosam eveniet necessitatibus. </p>
     <div class="card mt-5" style="align-items: center;">
         <h1>Student Dashboard</h1>
     </div>
@@ -48,11 +45,81 @@
                     <td>{{ student.name }}</td>
                     <td>{{ student.address }}</td>
                     <td>{{ student.percentage }}</td>
-                    <td><button class="btn btn-secondary">Edit</button></td>
-                    <td><button class="btn btn-danger" (click)="deleteStudent(student.rollNumber)" >Delete</button></td>
+                    <td><button class="btn btn-secondary" (click)="openEditModal(editModal, student)">Edit</button></td>
+                    <td><button class="btn btn-danger" (click)="deleteStudent(student.rollNumber)">Delete</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </div>
+
+<ng-template #editModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit student</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="editModalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <form #editForm="ngForm" (ngSubmit)="update(editForm)">
+        <div class="modal-body">
+            <div class="form-group mt-3">
+                <input type="hidden" name="rollNumber" id="rollNumber" #rollNumber [ngModel]="studentToUpdate.rollNumber" class="form-control">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" #name [ngModel]="studentToUpdate.name" class="form-control"
+                    placeholder="Student name">
+            </div>
+            <div class="form-group mt-3">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" #address [ngModel]="studentToUpdate.address" class="form-control"
+                    placeholder="Student address">
+            </div>
+            <div class="form-group mt-3">
+                <label for="percentage">Percentage</label>
+                <input type="number" name="percentage" id="percentage" #percentage [ngModel]="studentToUpdate.percentage"
+                    class="form-control" placeholder="Student percentage">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group mt-3 text-end">
+                <button type="button" class="btn btn-secondary" (click)="closeEditModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+</ng-template>
+
+
+<!-- Just for learn about modals -->
+<!-- <hr>
+<button type="button" class="btn btn-primary" (click)="openModal(template)">Open first modal</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">First modal</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        This is a first modal<br />
+        <button type="button" class="btn btn-primary" (click)="openModal2(templateNested)">Open second modal</button>
+        <button type="button" class="btn btn-primary" (click)="closeModal(1)">Close self</button>
+        <button type="button" class="btn btn-primary" (click)="closeModal()">Close all modal</button>
+    </div>
+</ng-template>
+
+<ng-template #templateNested>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Second modal</h4>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef2?.hide()">
+            <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        This is nested modal.<br />
+        <button *ngIf="modalRef" type="button" class="btn btn-danger" (click)="closeFirstModal()">Close first
+            modal</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal(2)">Close self</button>
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Close all modal</button>
+    </div>
+</ng-template> -->
