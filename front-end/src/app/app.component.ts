@@ -22,8 +22,8 @@ export class AppComponent {
     }
 
     // teste
-    modalRef?: BsModalRef | null;
-    modalRef2?: BsModalRef;
+    // modalRef?: BsModalRef | null;
+    // modalRef2?: BsModalRef;
 
     editModalRef?: BsModalRef | null;
 
