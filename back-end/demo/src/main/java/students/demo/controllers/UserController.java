@@ -1,5 +1,9 @@
 package students.demo.controllers;
 
+import javax.annotation.PostConstruct;
+
+// import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +21,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // TODO: disable this later.
+    @PostConstruct
+    public void initRoleAndUsers() {
+        userService.initRoleAndUsers();
+    }
+
     @PostMapping()
     public User registerUser(@RequestBody User user)    {
         return userService.registerUser(user);
@@ -31,6 +41,5 @@ public class UserController {
     public String forUser() {
         return "Esta área da aplicação é acessível somente ao usuário.";
     }
-
-    // TODO: Criar users, roles e user_roles no DB.
+    
 }
