@@ -37,12 +37,13 @@ public class SecurityConfiguration {
     private UserDetailsService jwtService;
 
     // configure method (deprecated)
+    // https://stackoverflow.com/questions/72381114/spring-security-upgrading-the-deprecated-websecurityconfigureradapter-in-spring
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors();
         http.csrf().disable()
             .authorizeRequests()
-            .antMatchers("/authenticate").permitAll()
+            .antMatchers("/authenticate", "/registerNewUser").permitAll()
             .antMatchers(HttpHeaders.ALLOW).permitAll()
             .anyRequest().authenticated()
             .and()
