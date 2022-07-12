@@ -41,6 +41,9 @@ public class JwtService implements UserDetailsService {
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
         User user = userRepository.findById(userName).get();
 
+        // Do not pass the password (encripted) to front end.
+        user.setUserPassword("userPassword");
+
         return new JwtResponse(user, newGeneratedToken);
     }
 
