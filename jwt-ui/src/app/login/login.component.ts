@@ -1,5 +1,8 @@
+import { UserAuthService } from './../_services/user-auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../_services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -9,14 +12,30 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
     
-    constructor() { }
+    constructor(private userService: UserService,
+                private userAuthService: UserAuthService,
+                private router: Router) { }
 
     ngOnInit(): void {
     }
 
     login(loginForm: NgForm) {
-        console.log('Form is submited');
-        console.log(loginForm.value);
+        this.userService.login(loginForm.value).subscribe({
+            next: (response: any) => {
+                this.userAuthService.setRoles(response.user.role);
+                this.userAuthService.setToken(response.jwtToken);
+
+                const role = response.user.role[0].roleName;
+                if(role === 'admin') {
+                    this.router.navigate(['/admin']);
+                } else {
+                    this.router.navigate(['/user-dashboard']);
+                }
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
     }
 
 }
